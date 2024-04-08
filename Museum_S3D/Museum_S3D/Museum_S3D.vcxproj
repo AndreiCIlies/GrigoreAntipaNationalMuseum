@@ -99,8 +99,8 @@
     <IncludePath>C:\Cristina\Anul 2- semestrul 2\S3D\external\glm;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Cristina\Anul 2- semestrul 2\S3D\external\glm;C:\Cristina\Anul 2- semestrul 2\S3D\external\glfw\include;C:\Cristina\Anul 2- semestrul 2\S3D\external\glfw\include\GLFW;C:\Cristina\Anul 2- semestrul 2\S3D\external\stb-master;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Cristina\Anul 2- semestrul 2\S3D\external\glfw\lib-vc2022;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\..\external\glm;..\..\..\external\glfw-x64\include;..\..\..\external\glfw-x64\include\GLFW;..\..\..\external\stb-master;..\..\..\external\glew-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\external\glew-2.1.0\lib;..\..\..\external\glew-2.1.0\lib\Release\Win32;..\..\..\external\glew-2.1.0\lib\Release\x64;..\..\..\external\glfw-x64\lib-vc2022;..\..\..\external\glfw-x64\lib-mingw-w64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -108,12 +108,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\GL\GLEW\include;C:\GL\GLUT\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\GL\GLUT\lib;C:\GL\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
