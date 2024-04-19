@@ -33,6 +33,15 @@
     <ClInclude Include="Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -64,5 +73,7 @@
     <None Include="Floor.vs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="modelLoading.vs" />
+    <None Include="modelLoading.fs" />
   </ItemGroup>
 </Project>

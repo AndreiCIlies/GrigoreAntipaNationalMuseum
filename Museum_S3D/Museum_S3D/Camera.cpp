@@ -159,4 +159,3 @@ void Camera::UpdateCameraVectors()
 	up = glm::normalize(glm::cross(right, forward));
 }
 
-#include "Camera.h"

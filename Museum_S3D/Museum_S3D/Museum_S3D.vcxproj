@@ -20,6 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelShader.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
@@ -40,6 +43,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
     <None Include="Floor.vs">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="modelLoading.fs">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="modelLoading.vs">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
   </ItemGroup>
@@ -99,8 +108,8 @@
     <IncludePath>C:\Cristina\Anul 2- semestrul 2\S3D\external\glm;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\..\external\glm;..\..\..\external\glfw-x64\include;..\..\..\external\glfw-x64\include\GLFW;..\..\..\external\stb-master;..\..\..\external\glew-2.1.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\..\external\glew-2.1.0\lib;..\..\..\external\glew-2.1.0\lib\Release\Win32;..\..\..\external\glew-2.1.0\lib\Release\x64;..\..\..\external\glfw-x64\lib-vc2022;..\..\..\external\glfw-x64\lib-mingw-w64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\..\external\glm;..\..\..\external\glfw-x64\include;..\..\..\external\glfw-x64\include\GLFW;..\..\..\external\stb-master;..\..\..\external\glew-2.1.0\include;..\..\..\external\ASSIMP\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\external\glew-2.1.0\lib;..\..\..\external\glew-2.1.0\lib\Release\Win32;..\..\..\external\glew-2.1.0\lib\Release\x64;..\..\..\external\glfw-x64\lib-vc2022;..\..\..\external\glfw-x64\lib-mingw-w64;..\..\..\external\ASSIMP\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,7 +123,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp-vc140-mt.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -18,6 +18,8 @@ public:
     void SetCamera(Camera* camera);
     // GameLoop
     void Render();
+    void RenderModels();
+
 
 private:
     int resize = 20;
