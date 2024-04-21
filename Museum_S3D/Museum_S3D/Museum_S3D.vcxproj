@@ -105,7 +105,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Cristina\Anul 2- semestrul 2\S3D\external\glm;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\_external\glm;..\..\..\_external\glew-2.1.0\include;..\..\..\_external\glfw-x64\include\GLFW;..\..\..\_external\stb_image;..\..\..\_external\assimp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\_external\glew-2.1.0\lib\Release\x64;..\..\..\_external\glfw-x64\lib-vc2022;..\..\..\_external\assimp\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>..\..\..\external\glm;..\..\..\external\glfw-x64\include;..\..\..\external\glfw-x64\include\GLFW;..\..\..\external\stb-master;..\..\..\external\glew-2.1.0\include;..\..\..\external\ASSIMP\include;$(IncludePath)</IncludePath>
@@ -155,6 +156,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\_external\assimp\lib\x64\assimp-vc143-mt.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
