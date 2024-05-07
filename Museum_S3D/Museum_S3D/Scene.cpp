@@ -33,6 +33,7 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/floor.jpg", "floorTexture");
 	ResourceManager::LoadTexture("../../Textures/wall.jpg", "wallTexture");
 	ResourceManager::LoadTexture("../../Textures/Ceiling.png", "ceilingTexture");
+	//ResourceManager::LoadTexture("../../Textures/forest.jpg", "forestTexture");
 	
 
 	models = new map<std::string, Model>();
@@ -40,6 +41,7 @@ void Scene::Init()
 
 	//Mountain/forest zone
 	models->insert({ "Wolf",Model("../../3DObjects/Wolf/wolf.obj") });
+	models->insert({ "Tree",Model("../../3DObjects/Tree/Tree.obj") });
 
 
 	//Renderers
@@ -64,7 +66,8 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(-5.5f - resize, 4.5f + resize, 0.f), glm::vec3(), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("ceilingTexture"), pCamera, glm::vec3(0.f, 30.f + resize, 0.f), glm::vec3(), 0.f, glm::vec3(0.f, 0.f, 1.f), NULL);
 	
-	//MOUNTAIN WALL + PODIUM
+	//Forest WALL + PODIUM
+	//renderer->Draw(ResourceManager::GetTexture("forestTexture"), pCamera, glm::vec3(0.f - resize, 1.f, 0.f), glm::vec3(0.6f, 0.6f, 0.6f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderPodium->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(-20.5f, 0.f, 0.f), glm::vec3(10.f, 1.f, 23.f), 0.0f, glm::vec3(), NULL);
 
 	// SECOND ROOM
@@ -98,12 +101,41 @@ void Scene::RenderModels()
 
 	
 	glm::mat4 modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(-20.0f, 0.5f, -10.0f));
+	modelM = glm::translate(modelM, glm::vec3(-20.0f, 0.5f, -1.0f));
 	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
 	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Wolf").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-22.0f, 0.0f, 13.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.01f, 0.01f, 0.01f));
+	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Tree").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-22.0f, 0.0f, -13.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.01f, 0.01f, 0.01f));
+	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Tree").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-22.0f, 0.01f, -5.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.01f, 0.01f, 0.01f));
+	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Tree").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-22.0f, 0.01f, 5.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.01f, 0.01f, 0.01f));
+	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Tree").Draw(modelShader);
+
 
 
 }
