@@ -42,6 +42,7 @@ void Scene::Init()
 	//Mountain/forest zone
 	models->insert({ "Wolf",Model("../../3DObjects/Wolf/wolf.obj") });
 	models->insert({ "Tree",Model("../../3DObjects/Tree/Tree.obj") });
+	models->insert({ "Spinosaurus", Model("../../3DObjects/Spinosaurus/13217_Spinosaurus_V1_NEW.obj") });
 
 
 	//Renderers
@@ -136,6 +137,11 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Tree").Draw(modelShader);
 
-
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(50.0f, 0.01f, -15.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.04f, 0.04f));
+	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Spinosaurus").Draw(modelShader);
 
 }
