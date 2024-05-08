@@ -45,6 +45,7 @@ void Scene::Init()
 	models->insert({ "Spinosaurus", Model("../../3DObjects/Spinosaurus/13217_Spinosaurus_V1_NEW.obj") });
 	models->insert({ "Dracovenator", Model("../../3DObjects/Dracovenator/21538_Dracovenator_v1.obj") });
 	models->insert({ "Quetzalcoatlus", Model("../../3DObjects/Quetzalcoatlus/13623_Quetzalcoatlus_v1_L2.obj") });
+	models->insert({ "Wire", Model("../../3DObjects/Wire/wire.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -146,10 +147,16 @@ void Scene::RenderModels()
 	models->at("Spinosaurus").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(37.0f, 5.f, -15.0f));
+	modelM = glm::translate(modelM, glm::vec3(37.0f, 15.f, -15.0f));
 	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.04f, 0.04f));
 	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(0.f, 0.f, 0.5f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Quetzalcoatlus").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(33.0f, 35.f, -10.0f));
+	modelM = glm::scale(modelM, glm::vec3(1.f, 7.2f, 1.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Wire").Draw(modelShader);
 }
