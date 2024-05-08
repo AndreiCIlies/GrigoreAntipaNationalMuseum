@@ -43,7 +43,8 @@ void Scene::Init()
 	models->insert({ "Wolf",Model("../../3DObjects/Wolf/wolf.obj") });
 	models->insert({ "Tree",Model("../../3DObjects/Tree/Tree.obj") });
 	models->insert({ "Spinosaurus", Model("../../3DObjects/Spinosaurus/13217_Spinosaurus_V1_NEW.obj") });
-
+	models->insert({ "Dracovenator", Model("../../3DObjects/Dracovenator/21538_Dracovenator_v1.obj") });
+	models->insert({ "Quetzalcoatlus", Model("../../3DObjects/Quetzalcoatlus/13623_Quetzalcoatlus_v1_L2.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -144,4 +145,11 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Spinosaurus").Draw(modelShader);
 
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(37.0f, 5.f, -15.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.04f, 0.04f));
+	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(0.f, 0.f, 0.5f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Quetzalcoatlus").Draw(modelShader);
 }
