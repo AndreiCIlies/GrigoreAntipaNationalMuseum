@@ -100,8 +100,7 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projectionM));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(viewM));
 
-
-
+	// First Room - Cristina
 	
 	glm::mat4 modelM = glm::mat4();
 	modelM = glm::translate(modelM, glm::vec3(-20.0f, 0.5f, -1.0f));
@@ -139,15 +138,17 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Tree").Draw(modelShader);
 
+	// Second Room - Andrei
+
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(50.0f, 0.01f, -15.0f));
+	modelM = glm::translate(modelM, glm::vec3(50.f, 0.01f, -15.f));
 	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.04f, 0.04f));
 	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Spinosaurus").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(37.0f, 15.f, -15.0f));
+	modelM = glm::translate(modelM, glm::vec3(37.f, 15.f, -15.f));
 	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.04f, 0.04f));
 	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(0.f, 0.f, 0.5f));
@@ -155,8 +156,22 @@ void Scene::RenderModels()
 	models->at("Quetzalcoatlus").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(33.0f, 35.f, -10.0f));
+	modelM = glm::translate(modelM, glm::vec3(33.f, 35.f, -10.f));
 	modelM = glm::scale(modelM, glm::vec3(1.f, 7.2f, 1.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Wire").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(41.f, 35.f, -18.f));
+	modelM = glm::scale(modelM, glm::vec3(1.f, 7.2f, 1.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Wire").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(39.2f, 32.9f, -12.f));
+	modelM = glm::scale(modelM, glm::vec3(1.f, 8.2f, 1.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Wire").Draw(modelShader);
+
+	// Third Room - Florentin
 }
