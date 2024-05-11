@@ -43,10 +43,10 @@ void Scene::Init()
 	models->insert({ "Wolf",Model("../../3DObjects/Wolf/wolf.obj") });
 	models->insert({ "Tree",Model("../../3DObjects/Tree/Tree.obj") });
 	models->insert({ "Spinosaurus", Model("../../3DObjects/Spinosaurus/13217_Spinosaurus_V1_NEW.obj") });
-	models->insert({ "Dracovenator", Model("../../3DObjects/Dracovenator/21538_Dracovenator_v1.obj") });
 	models->insert({ "Quetzalcoatlus", Model("../../3DObjects/Quetzalcoatlus/13623_Quetzalcoatlus_v1_L2.obj") });
 	models->insert({ "Wire", Model("../../3DObjects/Wire/wire.obj") });
 	models->insert({ "Dilophosaurus", Model("../../3DObjects/Dilophosaurus/dilophosaurus.obj") });
+	models->insert({ "Barosaurus", Model("../../3DObjects/Barosaurus/21534_Barosaurus_v1.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -206,6 +206,16 @@ void Scene::RenderModels()
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(0.f, -0.3f, 0.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Dilophosaurus").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(35.f, -0.45f, 15.f));
+	modelM = glm::scale(modelM, glm::vec3(1.5f, 2.f, 1.5f));
+	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(180.f), glm::vec3(1.f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(315.f), glm::vec3(0.f, 0.f, 0.5f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Barosaurus").Draw(modelShader);
 
 	// Fourth Room - Florentin
 
