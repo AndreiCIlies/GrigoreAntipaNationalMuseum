@@ -46,6 +46,7 @@ void Scene::Init()
 	models->insert({ "Dracovenator", Model("../../3DObjects/Dracovenator/21538_Dracovenator_v1.obj") });
 	models->insert({ "Quetzalcoatlus", Model("../../3DObjects/Quetzalcoatlus/13623_Quetzalcoatlus_v1_L2.obj") });
 	models->insert({ "Wire", Model("../../3DObjects/Wire/wire.obj") });
+	models->insert({ "Dilophosaurus", Model("../../3DObjects/Dilophosaurus/dilophosaurus.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -124,7 +125,9 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projectionM));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(viewM));
 
-	// First Room - Cristina
+	// First Room - Florentin
+
+	// Second Room - Cristina
 	
 	glm::mat4 modelM = glm::mat4();
 	modelM = glm::translate(modelM, glm::vec3(-20.0f, 0.5f, -1.0f));
@@ -162,11 +165,11 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Tree").Draw(modelShader);
 
-	// Second Room - Andrei
+	// Third Room - Andrei
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(50.f, 0.01f, -15.f));
-	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.04f, 0.04f));
+	modelM = glm::translate(modelM, glm::vec3(50.f, -0.4f, -15.f));
+	modelM = glm::scale(modelM, glm::vec3(0.05f, 0.07f, 0.05f));
 	modelM = glm::rotate(modelM, glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Spinosaurus").Draw(modelShader);
@@ -197,5 +200,16 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Wire").Draw(modelShader);
 
-	// Third Room - Florentin
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(65.2f, 4.3f, -15.f));
+	modelM = glm::scale(modelM, glm::vec3(3.f, 4.2f, 2.f));
+	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(0.f, -0.3f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Dilophosaurus").Draw(modelShader);
+
+	// Fourth Room - Florentin
+
+	// Fifth Room - Cristina
+
+	// Sixth Room - Andrei
 }
