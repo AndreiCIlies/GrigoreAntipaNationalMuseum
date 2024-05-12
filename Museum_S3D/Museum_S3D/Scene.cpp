@@ -40,7 +40,12 @@ void Scene::Init()
 	//Info about animals
 	ResourceManager::LoadTexture("../../Textures/bearinfo.png", "bearinfo");
 	ResourceManager::LoadTexture("../../Textures/wolfinfo.png", "wolfinfo");
-
+	ResourceManager::LoadTexture("../../Textures/spinosaurusInfo.png", "spinosaurusInfo");
+	ResourceManager::LoadTexture("../../Textures/barosaurusInfo.png", "barosaurusInfo");
+	ResourceManager::LoadTexture("../../Textures/t-rexInfo.png", "t-rexInfo");
+	ResourceManager::LoadTexture("../../Textures/dilophosaurusInfo.png", "dilophosaurusInfo");
+	ResourceManager::LoadTexture("../../Textures/quetzalcoatlusInfo.png", "quetzalcoatlusInfo");
+		
 	models = new map<std::string, Model>();
 	//MODELS
 
@@ -91,6 +96,8 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-5.185f - resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-0.5f, 9.55f, 4.79f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderPodium->Draw(ResourceManager::GetTexture("grassTexture"), pCamera, glm::vec3(0.f, 0.f, -20.f), glm::vec3(23.5f, 1.f, 10.f), 0.0f, glm::vec3(), NULL);
+
+	//trebuie mutate 
 	renderer->Draw(ResourceManager::GetTexture("bearinfo"), pCamera, glm::vec3(-2.9f - resize, 6.0f, 1.0f), glm::vec3(0.1, 0.1f, 0.1f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("wolfinfo"), pCamera, glm::vec3(2.9f + resize, 6.0f, 1.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::radians(-90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	// THIRD ROOM
