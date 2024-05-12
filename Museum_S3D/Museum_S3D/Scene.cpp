@@ -37,7 +37,9 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/muzeu.jpg", "museumTexture");
 	ResourceManager::LoadTexture("../../Textures/door.jpg", "doorTexture");
 
-	
+	//Info about animals
+	ResourceManager::LoadTexture("../../Textures/bearinfo.png", "bearinfo");
+	ResourceManager::LoadTexture("../../Textures/wolfinfo.png", "wolfinfo");
 
 	models = new map<std::string, Model>();
 	//MODELS
@@ -83,12 +85,14 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(4.5f + resize, 4.5f + resize, 0.f), glm::vec3(), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(-5.5f - resize, 4.5f + resize, 0.f), glm::vec3(), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("ceilingTexture"), pCamera, glm::vec3(0.f, 30.f + resize, 0.f), glm::vec3(), 0.f, glm::vec3(0.f, 0.f, 1.f), NULL);
-	renderer->Draw(ResourceManager::GetTexture("museumTexture"), pCamera, glm::vec3(0.f , 13.5f+resize, -4.4f - resize), glm::vec3(0.6f, 0.6f, 0.6f), glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f), NULL);
+
+	renderer->Draw(ResourceManager::GetTexture("museumTexture"), pCamera, glm::vec3(0.f, 11.5f + resize, -3.4f - resize), glm::vec3(0.6f, 0.6f, 0.6f), glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(4.77f + resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-5.185f - resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-0.5f, 9.55f, 4.79f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderPodium->Draw(ResourceManager::GetTexture("grassTexture"), pCamera, glm::vec3(0.f, 0.f, -20.f), glm::vec3(23.5f, 1.f, 10.f), 0.0f, glm::vec3(), NULL);
-	
+	renderer->Draw(ResourceManager::GetTexture("bearinfo"), pCamera, glm::vec3(-2.9f - resize, 6.0f, 1.0f), glm::vec3(0.1, 0.1f, 0.1f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
+	renderer->Draw(ResourceManager::GetTexture("wolfinfo"), pCamera, glm::vec3(2.9f + resize, 6.0f, 1.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::radians(-90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	// THIRD ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(50.0f, 0.f, 0.f), glm::vec3(), 0.f, glm::vec3(), NULL);
 
