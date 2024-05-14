@@ -36,13 +36,13 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/grassTexture.jpg", "grassTexture");
 	ResourceManager::LoadTexture("../../Textures/muzeu.jpg", "museumTexture");
 	ResourceManager::LoadTexture("../../Textures/door.jpg", "doorTexture");
+	ResourceManager::LoadTexture("../../Textures/dinosaurPodium.jpg", "dinosaurPodiumTexture");
 
 	//Info about animals
 	ResourceManager::LoadTexture("../../Textures/bearinfo.png", "bearinfo");
 	ResourceManager::LoadTexture("../../Textures/wolfinfo.png", "wolfinfo");
 	ResourceManager::LoadTexture("../../Textures/spinosaurusInfo.png", "spinosaurusInfo");
 	ResourceManager::LoadTexture("../../Textures/barosaurusInfo.png", "barosaurusInfo");
-	ResourceManager::LoadTexture("../../Textures/t-rexInfo.png", "t-rexInfo");
 	ResourceManager::LoadTexture("../../Textures/dilophosaurusInfo.png", "dilophosaurusInfo");
 	ResourceManager::LoadTexture("../../Textures/quetzalcoatlusInfo.png", "quetzalcoatlusInfo");
 		
@@ -114,6 +114,8 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("quetzalcoatlusInfo"), pCamera, glm::vec3(35.f, 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("spinosaurusInfo"), pCamera, glm::vec3(50.f, 18.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("dilophosaurusInfo"), pCamera, glm::vec3(65.f, 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
+
+	renderer->Draw(ResourceManager::GetTexture("dinosaurPodiumTexture"), pCamera, glm::vec3(67.f, -0.3f, -30.f + resize), glm::vec3(0.2f, 0.2f, 0.2f), 0.f, glm::vec3(), NULL);
 
 	// SIXTH ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(-50.0f, 0.f, 50.f), glm::vec3(), 0.f, glm::vec3(), NULL);
@@ -215,7 +217,7 @@ void Scene::RenderModels()
 	models->at("Wire").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(68.7f, 7.f, -13.f));
+	modelM = glm::translate(modelM, glm::vec3(68.7f, 7.3f, -13.f));
 	modelM = glm::scale(modelM, glm::vec3(8.f, 7.f, 5.f));
 	modelM = glm::rotate(modelM, glm::radians(20.f), glm::vec3(0.f, -0.3f, 0.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
