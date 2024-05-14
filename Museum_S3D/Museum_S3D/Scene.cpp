@@ -36,7 +36,6 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/grassTexture.jpg", "grassTexture");
 	ResourceManager::LoadTexture("../../Textures/muzeu.jpg", "museumTexture");
 	ResourceManager::LoadTexture("../../Textures/door.jpg", "doorTexture");
-	ResourceManager::LoadTexture("../../Textures/dinosaurPodium.jpg", "dinosaurPodiumTexture");
 
 	//Info about animals
 	ResourceManager::LoadTexture("../../Textures/bearinfo.png", "bearinfo");
@@ -61,6 +60,7 @@ void Scene::Init()
 	models->insert({ "Cearadactylus", Model("../../3DObjects/Cearadactylus/13627_Cearadactylus_v2_l3.obj") });
 	models->insert({ "Vultur", Model("../../3DObjects/Vultur/Vultur.obj") });
 	models->insert({ "Grass",Model("../../3DObjects/Grass/Grass.obj") });
+	models->insert({ "Podium",Model("../../3DObjects/Podium/podium.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -118,8 +118,6 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("quetzalcoatlusInfo"), pCamera, glm::vec3(35.f, 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("spinosaurusInfo"), pCamera, glm::vec3(50.f, 18.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("dilophosaurusInfo"), pCamera, glm::vec3(65.f, 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
-
-	renderer->Draw(ResourceManager::GetTexture("dinosaurPodiumTexture"), pCamera, glm::vec3(67.f, -0.3f, -30.f + resize), glm::vec3(0.2f, 0.2f, 0.2f), 0.f, glm::vec3(), NULL);
 
 	// SIXTH ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(-50.0f, 0.f, 50.f), glm::vec3(), 0.f, glm::vec3(), NULL);
@@ -185,7 +183,6 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Bear").Draw(modelShader);
 
-
 	// Third Room - Andrei
 
 	modelM = glm::mat4();
@@ -229,7 +226,7 @@ void Scene::RenderModels()
 	models->at("Dilophosaurus").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(35.f, 0.1f, 15.f));
+	modelM = glm::translate(modelM, glm::vec3(35.f, -0.3f, 15.f));
 	modelM = glm::scale(modelM, glm::vec3(2.f, 3.3f, 1.5f));
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
@@ -239,7 +236,7 @@ void Scene::RenderModels()
 	models->at("Barosaurus").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(67.f, 0.1f, 13.f));
+	modelM = glm::translate(modelM, glm::vec3(67.f, -0.35f, 14.f));
 	modelM = glm::scale(modelM, glm::vec3(0.08f, 0.1f, 0.05f));
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
@@ -247,6 +244,30 @@ void Scene::RenderModels()
 	modelM = glm::rotate(modelM, glm::radians(180.f), glm::vec3(0.f, 0.f, 0.5f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Cearadactylus").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(67.3f, -0.4f, 14.f));
+	modelM = glm::scale(modelM, glm::vec3(3.f, 3.f, 3.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Podium").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(66.3f, -0.4f, -9.8f));
+	modelM = glm::scale(modelM, glm::vec3(4.f, 4.f, 4.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Podium").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(50.f, -0.4f, -16.5f));
+	modelM = glm::scale(modelM, glm::vec3(4.f, 4.f, 4.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Podium").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(34.5f, -0.4f, 16.5f));
+	modelM = glm::scale(modelM, glm::vec3(4.f, 4.f, 4.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Podium").Draw(modelShader);
 
 	// Sixth Room - Andrei
 
