@@ -36,6 +36,11 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/grassTexture.jpg", "grassTexture");
 	ResourceManager::LoadTexture("../../Textures/muzeu.jpg", "museumTexture");
 	ResourceManager::LoadTexture("../../Textures/door.jpg", "doorTexture");
+	//ResourceManager::LoadTexture("../../Textures/butterflies.jpg", "butterflies");
+	ResourceManager::LoadTexture("../../Textures/bugs.jpg", "bugs");
+	ResourceManager::LoadTexture("../../Textures/dragonfly.jpg", "dragonfly");
+	ResourceManager::LoadTexture("../../Textures/Spiders.jpg", "spiders");
+
 
 	//Info about animals
 	ResourceManager::LoadTexture("../../Textures/bearinfo.png", "bearinfo");
@@ -94,15 +99,13 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(-5.5f - resize, 4.5f + resize, 0.f), glm::vec3(), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("ceilingTexture"), pCamera, glm::vec3(0.f, 30.f + resize, 0.f), glm::vec3(), 0.f, glm::vec3(0.f, 0.f, 1.f), NULL);
 
-	renderer->Draw(ResourceManager::GetTexture("museumTexture"), pCamera, glm::vec3(0.f, 11.5f + resize, -3.4f - resize), glm::vec3(0.6f, 0.6f, 0.6f), glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f), NULL);
+	renderer->Draw(ResourceManager::GetTexture("museumTexture"), pCamera, glm::vec3(0.f, 11.5f + resize, -3.4f - resize), glm::vec3(0.6f, 0.8f, 0.4f), glm::radians(270.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(4.77f + resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-5.185f - resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-0.5f, 9.55f, 4.79f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderPodium->Draw(ResourceManager::GetTexture("grassTexture"), pCamera, glm::vec3(0.f, 0.f, -20.f), glm::vec3(23.5f, 1.f, 10.f), 0.0f, glm::vec3(), NULL);
-
-	//trebuie mutate 
-	renderer->Draw(ResourceManager::GetTexture("bearinfo"), pCamera, glm::vec3(-2.9f - resize, 6.0f, 1.0f), glm::vec3(0.1, 0.1f, 0.1f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
-	renderer->Draw(ResourceManager::GetTexture("wolfinfo"), pCamera, glm::vec3(2.9f + resize, 6.0f, 1.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::radians(-90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
+	renderer->Draw(ResourceManager::GetTexture("wolfinfo"), pCamera, glm::vec3(15.f , 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
+	renderer->Draw(ResourceManager::GetTexture("bearinfo"), pCamera, glm::vec3(-5.f, 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	// THIRD ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(50.0f, 0.f, 0.f), glm::vec3(), 0.f, glm::vec3(), NULL);
 
@@ -139,6 +142,7 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(4.73f + resize, 9.55f, 50.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-45.1f + resize, 9.55f, 50.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-0.2f, 9.55f, 4.815f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
+	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(3.f, 9.55f, 4.815f + resize), glm::vec3(0.2f, 0.3f, 0.2f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 
 	// FOURTH ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(50.0f, 0.f, 50.f), glm::vec3(), 0.f, glm::vec3(), NULL);
