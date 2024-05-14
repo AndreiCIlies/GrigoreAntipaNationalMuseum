@@ -72,7 +72,7 @@ void Scene::SetCamera(Camera* camera)
 	pCamera = camera;
 }
 
-float unghiRotatie = 0.0f;
+float rotationAngle = 0.0f;
 
 void Scene::Render()
 {
@@ -165,7 +165,7 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projectionM));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(viewM));
 
-	// First Room - Florentin
+	// First Room - ?
 
 	// Second Room - Cristina
 	
@@ -248,28 +248,26 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Cearadactylus").Draw(modelShader);
 
-	// Fourth Room - 
-	unghiRotatie += 0.5f; // Poți ajusta viteza de rotație aici
-
-
-	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(50.f, 0.1f, 50.f));
-	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
-	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(0.0f ,1.0f, 0.0f)); // Rotirea modelului în jurul axei X
-	modelM = glm::rotate(modelM, glm::radians(unghiRotatie), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotirea continuă în jurul axei Y
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Vultur").Draw(modelShader);
-
-	// Fourth Room - 
-	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(50.f, 0.001f, 50.f));
-	modelM = glm::scale(modelM, glm::vec3(0.01f, 0.01f, 0.01f));
-	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotirea modelului în jurul axei X
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Grass").Draw(modelShader);
-
+	// Sixth Room - Andrei
 
 	// Fifth Room - Cristina
 
-	// Sixth Room - Andrei
+	rotationAngle += 0.25f;
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-1.5f, 0.f, 50.f));
+	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
+	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
+	modelM = glm::rotate(modelM, glm::radians(rotationAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Vultur").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-1.5f, -0.5f, 50.f));
+	modelM = glm::scale(modelM, glm::vec3(0.05f, 0.05f, 0.05f));
+	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Grass").Draw(modelShader);
+
+	// Fourth Room - ?
 }
