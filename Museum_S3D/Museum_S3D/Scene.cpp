@@ -58,8 +58,7 @@ void Scene::Init()
 	models->insert({ "Dilophosaurus", Model("../../3DObjects/Dilophosaurus/dilophosaurus.obj") });
 	models->insert({ "Barosaurus", Model("../../3DObjects/Barosaurus/21534_Barosaurus_v1.obj") });
 	models->insert({ "Bear", Model("../../3DObjects/Bear/Bear.obj") });
-
-
+	models->insert({ "Cearadactylus", Model("../../3DObjects/Cearadactylus/13627_Cearadactylus_v2_l3.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -216,21 +215,31 @@ void Scene::RenderModels()
 	models->at("Wire").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(68.2f, 6.f, -15.f));
-	modelM = glm::scale(modelM, glm::vec3(4.f, 6.f, 4.f));
-	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(0.f, -0.3f, 0.f));
+	modelM = glm::translate(modelM, glm::vec3(68.7f, 7.f, -13.f));
+	modelM = glm::scale(modelM, glm::vec3(8.f, 7.f, 5.f));
+	modelM = glm::rotate(modelM, glm::radians(20.f), glm::vec3(0.f, -0.3f, 0.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Dilophosaurus").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(35.f, -0.45f, 15.f));
-	modelM = glm::scale(modelM, glm::vec3(1.5f, 2.f, 1.5f));
+	modelM = glm::translate(modelM, glm::vec3(35.f, 0.1f, 15.f));
+	modelM = glm::scale(modelM, glm::vec3(2.f, 3.3f, 1.5f));
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(180.f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(315.f), glm::vec3(0.f, 0.f, 0.5f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Barosaurus").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(67.f, 0.1f, 13.f));
+	modelM = glm::scale(modelM, glm::vec3(0.08f, 0.1f, 0.05f));
+	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(45.f), glm::vec3(1.f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(180.f), glm::vec3(1.f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(180.f), glm::vec3(0.f, 0.f, 0.5f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Cearadactylus").Draw(modelShader);
 
 	// Fourth Room - Florentin
 
