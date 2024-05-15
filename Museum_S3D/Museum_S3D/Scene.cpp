@@ -71,6 +71,7 @@ void Scene::Init()
 	models->insert({ "Rose",Model("../../3DObjects/Plants/Rose/rose.obj") });
 	models->insert({ "Tulip",Model("../../3DObjects/Plants/Tulip/12978_tulip_flower_l3.obj") });
 	models->insert({ "Daffodil",Model("../../3DObjects/Plants/Daffodil/12977_Daffodil_flower_v1_l2.obj") });
+	models->insert({ "Crocus",Model("../../3DObjects/Plants/Crocus/12974_crocus_flower_v1_l3.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -281,7 +282,7 @@ void Scene::RenderModels()
 
 	modelM = glm::mat4();
 	modelM = glm::translate(modelM, glm::vec3(50.f, -0.5f, 51.25f));
-	modelM = glm::scale(modelM, glm::vec3(0.07f, 0.07f, 0.07f));
+	modelM = glm::scale(modelM, glm::vec3(0.08f, 0.07f, 0.08f));
 	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Grass").Draw(modelShader);
@@ -396,6 +397,39 @@ void Scene::RenderModels()
 		else
 		{
 			xCoordinate += 5.5f;
+		}
+	}
+
+	xCoordinate = 41.f;
+	zCoordinate = 54.2f;
+
+	for (int i = 0; i < 9; i++)
+	{
+		modelM = glm::mat4();
+		modelM = glm::translate(modelM, glm::vec3(xCoordinate, -0.2f, zCoordinate));
+		modelM = glm::scale(modelM, glm::vec3(0.08f, 0.1f, 0.08f));
+		modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		modelM = glm::rotate(modelM, glm::radians(-135.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+		models->at("Crocus").Draw(modelShader);
+
+		if (i < 3)
+		{
+			zCoordinate -= 3.f;
+		}
+		else if (i == 3)
+		{
+			xCoordinate += 1.75f;
+			zCoordinate -= 1.85f;
+		}
+		else if (i == 4)
+		{
+			xCoordinate += 1.75f;
+			zCoordinate -= 1.65f;
+		}
+		else
+		{
+			xCoordinate += 3.f;
 		}
 	}
 
