@@ -154,8 +154,7 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(5.271f + resize, 9.55f, 50.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(270.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(48.f, 9.55f, 4.812f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 
-	renderer->Draw(ResourceManager::GetTexture("Crocus"), pCamera, glm::vec3(65.f, 18.f, 20.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(90.f), glm::vec3(2.f, 2.f, 0.f), NULL);
-
+	// renderer->Draw(ResourceManager::GetTexture("Rose"), pCamera, glm::vec3(35.f, 13.f, 10.f + resize), glm::vec3(0.08f, 0.5f, 0.1f), glm::radians(90.f), glm::vec3(-1.f, 0.f, 0.f), NULL);
 
 	// FIFTH ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(0.0f, 0.f, 50.f), glm::vec3(), 0.f, glm::vec3(), NULL);
@@ -308,7 +307,7 @@ void Scene::RenderModels()
 
 	modelM = glm::mat4();
 	modelM = glm::translate(modelM, glm::vec3(50.f, -0.1f, 50.f));
-	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.04f, 0.04f));
+	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.05f, 0.04f));
 	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
