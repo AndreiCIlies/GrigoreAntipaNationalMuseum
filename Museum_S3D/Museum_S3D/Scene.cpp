@@ -66,6 +66,8 @@ void Scene::Init()
 	models->insert({ "Vultur", Model("../../3DObjects/Vultur/Vultur.obj") });
 	models->insert({ "Grass",Model("../../3DObjects/Grass/Grass.obj") });
 	models->insert({ "Podium",Model("../../3DObjects/Podium/podium.obj") });
+	models->insert({ "Oak Tree",Model("../../3DObjects/Oak Tree/10445_Oak_Tree_v1_max2010_iteration-1.obj") });
+	//models->insert({ "Plant1",Model("../../3DObjects/Plants/Plant1/flower 04.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -274,6 +276,21 @@ void Scene::RenderModels()
 	models->at("Podium").Draw(modelShader);
 
 	// Sixth Room - Andrei
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(50.f, -0.5f, 50.f));
+	modelM = glm::scale(modelM, glm::vec3(0.07f, 0.07f, 0.07f));
+	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Grass").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(50.f, -0.1f, 50.f));
+	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.04f, 0.04f));
+	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Oak Tree").Draw(modelShader);
 
 	// Fifth Room - Cristina
 
