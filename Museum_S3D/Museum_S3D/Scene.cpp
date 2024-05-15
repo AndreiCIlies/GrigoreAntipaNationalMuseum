@@ -70,6 +70,7 @@ void Scene::Init()
 	models->insert({ "Daisy",Model("../../3DObjects/Plants/Daisy/10441_Daisy_v1_max2010_iteration-2.obj") });
 	models->insert({ "Rose",Model("../../3DObjects/Plants/Rose/rose.obj") });
 	models->insert({ "Tulip",Model("../../3DObjects/Plants/Tulip/12978_tulip_flower_l3.obj") });
+	models->insert({ "Daffodil",Model("../../3DObjects/Plants/Daffodil/12977_Daffodil_flower_v1_l2.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -369,6 +370,17 @@ void Scene::RenderModels()
 			xCoordinate += 2.5f;
 		}
 	}
+
+	xCoordinate = 45.f;
+	zCoordinate = 56.5f;
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(xCoordinate, -0.2f, zCoordinate));
+	modelM = glm::scale(modelM, glm::vec3(0.35f, 0.5f, 0.35f));
+	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Daffodil").Draw(modelShader);
 
 	// Fifth Room - Cristina
 
