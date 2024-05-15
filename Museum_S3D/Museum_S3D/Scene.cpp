@@ -49,6 +49,19 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/barosaurusInfo.png", "barosaurusInfo");
 	ResourceManager::LoadTexture("../../Textures/dilophosaurusInfo.png", "dilophosaurusInfo");
 	ResourceManager::LoadTexture("../../Textures/quetzalcoatlusInfo.png", "quetzalcoatlusInfo");
+	// Cearadactylus Info - TO ADD
+	ResourceManager::LoadTexture("../../Textures/Daisy.jpg", "Daisy");
+	// Daisy Info - TO ADD
+	ResourceManager::LoadTexture("../../Textures/Rose.jpg", "Rose");
+	// Rose Info - TO ADD
+	ResourceManager::LoadTexture("../../Textures/Tulip.jpg", "Tulip");
+	// Tulip Info - TO ADD
+	ResourceManager::LoadTexture("../../Textures/Daffodil.jpg", "Daffodil");
+	// Daffodil Info - TO ADD
+	ResourceManager::LoadTexture("../../Textures/Crocus.jpg", "Crocus");
+	// Crocus Info - TO ADD
+	ResourceManager::LoadTexture("../../Textures/Anemone.jpg", "Anemone");
+	// Anemone Info - TO ADD
 		
 	models = new map<std::string, Model>();
 	//MODELS
@@ -135,9 +148,14 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(-50.f, 4.5f + resize, 45.5f - resize), glm::vec3(), glm::radians(90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(-50.f, 4.5f + resize, 55.5f + resize), glm::vec3(), glm::radians(90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(-95.5f + resize, 4.5f + resize, 50.f), glm::vec3(), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), NULL);
+
 	renderer->Draw(ResourceManager::GetTexture("ceilingTexture"), pCamera, glm::vec3(-50.f, 30.f + resize, 50.f), glm::vec3(), 0.f, glm::vec3(0.f, 0.f, 1.f), NULL);
+
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(5.271f + resize, 9.55f, 50.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(270.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(48.f, 9.55f, 4.812f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
+
+	renderer->Draw(ResourceManager::GetTexture("Crocus"), pCamera, glm::vec3(65.f, 18.f, 20.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(90.f), glm::vec3(2.f, 2.f, 0.f), NULL);
+
 
 	// FIFTH ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(0.0f, 0.f, 50.f), glm::vec3(), 0.f, glm::vec3(), NULL);
