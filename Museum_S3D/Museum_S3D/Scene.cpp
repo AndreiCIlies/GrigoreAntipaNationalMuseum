@@ -280,7 +280,7 @@ void Scene::RenderModels()
 	// Sixth Room - Andrei
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(50.f, -0.5f, 50.f));
+	modelM = glm::translate(modelM, glm::vec3(50.f, -0.5f, 51.25f));
 	modelM = glm::scale(modelM, glm::vec3(0.07f, 0.07f, 0.07f));
 	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
@@ -371,16 +371,33 @@ void Scene::RenderModels()
 		}
 	}
 
-	xCoordinate = 45.f;
-	zCoordinate = 56.5f;
+	xCoordinate = 43.f;
+	zCoordinate = 57.f;
 
-	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(xCoordinate, -0.2f, zCoordinate));
-	modelM = glm::scale(modelM, glm::vec3(0.35f, 0.5f, 0.35f));
-	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Daffodil").Draw(modelShader);
+	for (int i = 0; i < 5; i++)
+	{
+		modelM = glm::mat4();
+		modelM = glm::translate(modelM, glm::vec3(xCoordinate, -0.2f, zCoordinate));
+		modelM = glm::scale(modelM, glm::vec3(0.35f, 0.5f, 0.35f));
+		modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		modelM = glm::rotate(modelM, glm::radians(-135.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+		models->at("Daffodil").Draw(modelShader);
+
+		if (i < 1)
+		{
+			zCoordinate -= 6.f;
+		}
+		else if (i == 1)
+		{
+			xCoordinate += 0.5f;
+			zCoordinate -= 6.f;
+		}
+		else
+		{
+			xCoordinate += 5.5f;
+		}
+	}
 
 	// Fifth Room - Cristina
 
