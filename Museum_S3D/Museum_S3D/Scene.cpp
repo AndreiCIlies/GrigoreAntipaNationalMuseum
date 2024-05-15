@@ -68,6 +68,7 @@ void Scene::Init()
 	models->insert({ "Podium",Model("../../3DObjects/Podium/podium.obj") });
 	models->insert({ "Oak Tree",Model("../../3DObjects/Oak Tree/10445_Oak_Tree_v1_max2010_iteration-1.obj") });
 	models->insert({ "Daisy",Model("../../3DObjects/Plants/Daisy/10441_Daisy_v1_max2010_iteration-2.obj") });
+	models->insert({ "Rose",Model("../../3DObjects/Plants/Rose/rose.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -313,6 +314,33 @@ void Scene::RenderModels()
 		{
 			xCoordinate += 0.5f;
 			zCoordinate -= 6.f;
+		}
+		else
+		{
+			xCoordinate += 5.f;
+		}
+	}
+
+	xCoordinate = 50.65f;
+	zCoordinate = 52.5f;
+
+	for (int i = 0; i < 4; i++)
+	{
+		modelM = glm::mat4();
+		modelM = glm::translate(modelM, glm::vec3(xCoordinate - 7.5f, -0.1f, zCoordinate));
+		modelM = glm::scale(modelM, glm::vec3(0.04f, 0.05f, 0.04f));
+		modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+		models->at("Rose").Draw(modelShader);
+
+		if (i < 1)
+		{
+			zCoordinate -= 6.f;
+		}
+		else if (i == 1)
+		{
+			xCoordinate += 3.f;
+			zCoordinate -= 3.f;
 		}
 		else
 		{
