@@ -86,6 +86,7 @@ void Scene::Init()
 	models->insert({ "Daffodil",Model("../../3DObjects/Plants/Daffodil/12977_Daffodil_flower_v1_l2.obj") });
 	models->insert({ "Crocus",Model("../../3DObjects/Plants/Crocus/12974_crocus_flower_v1_l3.obj") });
 	models->insert({ "Anemone",Model("../../3DObjects/Plants/Anemone/12973_anemone_flower_v1_l2.obj") });
+	models->insert({ "Light",Model("../../3DObjects/Light/light.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -308,14 +309,6 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Grass").Draw(modelShader);
 
-	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(50.f, -0.1f, 50.f));
-	modelM = glm::scale(modelM, glm::vec3(0.04f, 0.05f, 0.04f));
-	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Oak Tree").Draw(modelShader);
-
 	float xCoordinate = 43.f;
 	float zCoordinate = 55.f;
 
@@ -486,6 +479,13 @@ void Scene::RenderModels()
 			xCoordinate += 2.95f;
 		}
 	}
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(49.3f, 43.55f, 50.3f));
+	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.075f, 0.1f));
+	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Light").Draw(modelShader);
 
 	// Fifth Room - Cristina
 
