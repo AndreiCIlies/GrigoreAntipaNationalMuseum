@@ -45,6 +45,11 @@ void Cleanup()
 double deltaTime = 0.0f;	// time between current frame and last frame
 double lastFrame = 0.0f;
 
+float specularStrength = 0.5f;
+float ambientStrength = 0.1f;
+float diffuseStrength = 0.5f;
+int specularExponent = 32;
+
 Scene Museum(SCR_WIDTH, SCR_HEIGHT);
 
 int main(int argc, char** argv)
@@ -85,6 +90,11 @@ int main(int argc, char** argv)
 	// Create camera
 	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 3.0));
 
+	glm::vec3 lightPos(0.0f, 0.0f, 2.0f);
+
+	Shader lightingShader("PhongLight.vs", "PhongLight.fs");
+	Shader lampShader("Lamp.vs", "Lamp.fs");
+
 	Museum.SetCamera(pCamera);
 	Museum.Init();
 
@@ -100,6 +110,24 @@ int main(int argc, char** argv)
 		processInput(window);
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		lightingShader.Use();
+		lightingShader.SetVec3("objectColor", 0.5f, 1.0f, 0.31f);
+		lightingShader.SetVec3("lightColor", 1.0f, 1.0f, 1.0f);
+
+		glm::vec3 lightPos2 = lightPos + glm::vec3(cos(float(glfwGetTime())), sin(float(glfwGetTime())), 0.0f);
+		lightingShader.SetVec3("lightPos", lightPos2);
+		lightingShader.SetVec3("viewPos", pCamera->GetPosition());
+
+		lightingShader.SetMat4("projection", pCamera->GetProjectionMatrix());
+		lightingShader.SetMat4("view", pCamera->GetViewMatrix());
+
+		glm::mat4 model = glm::scale(glm::mat4(1.0), glm::vec3(3.0f));
+		lightingShader.SetMat4("model", model);
+		lightingShader.SetFloat("ambientStrength", ambientStrength);
+		lightingShader.SetFloat("diffuseStrength", diffuseStrength);
+		lightingShader.SetFloat("specularStrength", specularStrength);
+		lightingShader.SetInt("specularExponent", specularExponent);
 
 		Museum.Render();
 		Museum.RenderModels();
@@ -137,6 +165,17 @@ void processInput(GLFWwindow* window)
 		pCamera->ProcessKeyboard(UP, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS)
 		pCamera->ProcessKeyboard(DOWN, (float)deltaTime);
+
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	{
+		ambientStrength = std::min(1.0f, ambientStrength + 0.1f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
+	{
+		ambientStrength = std::max(0.0f, ambientStrength - 0.1f);
+	}
+
 
 	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
 		int width, height;

@@ -75,5 +75,9 @@
     </None>
     <None Include="modelLoading.vs" />
     <None Include="modelLoading.fs" />
+    <None Include="PhongLight.fs" />
+    <None Include="PhongLight.vs" />
+    <None Include="Lamp.fs" />
+    <None Include="Lamp.vs" />
   </ItemGroup>
 </Project>
