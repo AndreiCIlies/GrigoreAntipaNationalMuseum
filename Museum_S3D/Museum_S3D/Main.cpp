@@ -92,8 +92,10 @@ int main(int argc, char** argv)
 
 	glm::vec3 lightPos(0.0f, 0.0f, 2.0f);
 
-	Shader lightingShader("PhongLight.vs", "PhongLight.fs");
-	Shader lampShader("Lamp.vs", "Lamp.fs");
+	ResourceManager::LoadShader("Lamp.vs", "Lamp.fs", "shaderLamp");
+	ResourceManager::LoadShader("PhongLight.vs", "PhongLight.fs", "shaderLight");
+	Shader lampShader = ResourceManager::GetShader("shaderLamp");
+	Shader lightingShader = ResourceManager::GetShader("shaderLight");
 
 	Museum.SetCamera(pCamera);
 	Museum.Init();

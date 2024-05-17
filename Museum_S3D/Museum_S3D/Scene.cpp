@@ -40,6 +40,8 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/bugs.jpg", "bugs");
 	ResourceManager::LoadTexture("../../Textures/dragonfly.jpg", "dragonfly");
 	ResourceManager::LoadTexture("../../Textures/Spiders.jpg", "spiders");
+	ResourceManager::LoadTexture("../../Textures/columnTexture.jpg", "columnsTexture");
+
 
 
 	//Info about animals
@@ -87,6 +89,11 @@ void Scene::Init()
 	models->insert({ "Crocus",Model("../../3DObjects/Plants/Crocus/12974_crocus_flower_v1_l3.obj") });
 	models->insert({ "Anemone",Model("../../3DObjects/Plants/Anemone/12973_anemone_flower_v1_l2.obj") });
 	models->insert({ "Light",Model("../../3DObjects/Light/light.obj") });
+	models->insert({ "Pedastal",Model("../../3DObjects/Pedastal/pedastal.obj") });
+	models->insert({ "Parrot",Model("../../3DObjects/Parrot/parrot.obj") });
+	models->insert({ "Stork",Model("../../3DObjects/Stork/stork.obj") });
+	models->insert({ "Pelican",Model("../../3DObjects/Pelican/pelican.obj") });
+	models->insert({ "Duck",Model("../../3DObjects/Duck/duck.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -124,7 +131,7 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(4.77f + resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-5.185f - resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-0.5f, 9.55f, 4.79f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
-	renderPodium->Draw(ResourceManager::GetTexture("grassTexture"), pCamera, glm::vec3(0.f, 0.f, -20.f), glm::vec3(23.5f, 1.f, 10.f), 0.0f, glm::vec3(), NULL);
+	renderPodium->Draw(ResourceManager::GetTexture("columnTexture"), pCamera, glm::vec3(0.f, 0.f, -20.f), glm::vec3(23.5f, 1.f, 10.f), 0.0f, glm::vec3(), NULL);
 	renderer->Draw(ResourceManager::GetTexture("wolfinfo"), pCamera, glm::vec3(15.f , 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("bearinfo"), pCamera, glm::vec3(-5.f, 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	// THIRD ROOM
@@ -213,6 +220,23 @@ void Scene::RenderModels()
 	modelM = glm::rotate(modelM, glm::radians(-350.0f), glm::vec3(0.f, 0.f, 1.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Bear").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-10.0f, 0.0f, -20.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
+	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Pedastal").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(17.0f, 0.0f, -20.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
+	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Pedastal").Draw(modelShader);
+
+
+
 
 	// Third Room - Andrei
 
@@ -505,6 +529,56 @@ void Scene::RenderModels()
 	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Grass").Draw(modelShader);
+
+	// Draw Parrot
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(21.f, 10.f, 65.f));
+	modelM = glm::scale(modelM, glm::vec3(0.2f, 0.2f, 0.2f));
+	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Parrot").Draw(modelShader);
+
+	// Draw Stork
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-20.f, -0.1f, 65.f));
+	modelM = glm::scale(modelM, glm::vec3(0.3f, 0.3f, 0.3f));
+	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Stork").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-20.f, -0.4f, 68.f));
+	modelM = glm::scale(modelM, glm::vec3(4.f, 4.f, 4.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Podium").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-20.f, -0.1f, 30.f));
+	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
+	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Pelican").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-20.f, -0.4f, 32.f));
+	modelM = glm::scale(modelM, glm::vec3(4.f, 4.f, 4.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Podium").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(15.f, 1.4f, 42.f));
+	modelM = glm::scale(modelM, glm::vec3(0.07f, 0.07f, 0.07f));
+	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Duck").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(15.f, -0.4f, 43.f));
+	modelM = glm::scale(modelM, glm::vec3(4.f, 4.f, 4.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Podium").Draw(modelShader);
+
 
 	// Fourth Room - ?
 }

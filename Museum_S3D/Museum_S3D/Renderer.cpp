@@ -78,49 +78,52 @@ void Renderer::initRenderData()
 void Renderer::initRenderData(bool flag)
 {
 	this->flag = flag;
+	float scaleX = 2.0f; // Adjust this value to change the length of the podium
+
 	GLfloat podium[] = {
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	-0.5f * scaleX, -0.5f, -0.5f,  0.0f, 0.0f,
+	 0.5f * scaleX, -0.5f, -0.5f,  1.0f, 0.0f,
+	 0.5f * scaleX,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f * scaleX,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f * scaleX,  0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f * scaleX, -0.5f, -0.5f,  0.0f, 0.0f,
 
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f * scaleX, -0.5f,  0.5f,  0.0f, 0.0f,
+	 0.5f * scaleX, -0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f * scaleX,  0.5f,  0.5f,  1.0f, 1.0f,
+	 0.5f * scaleX,  0.5f,  0.5f,  1.0f, 1.0f,
+	-0.5f * scaleX,  0.5f,  0.5f,  0.0f, 1.0f,
+	-0.5f * scaleX, -0.5f,  0.5f,  0.0f, 0.0f,
 
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f * scaleX,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f * scaleX,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f * scaleX, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f * scaleX, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f * scaleX, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f * scaleX,  0.5f,  0.5f,  1.0f, 0.0f,
 
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f * scaleX,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f * scaleX,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f * scaleX, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f * scaleX, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f * scaleX, -0.5f,  0.5f,  0.0f, 0.0f,
+	 0.5f * scaleX,  0.5f,  0.5f,  1.0f, 0.0f,
 
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f * scaleX, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f * scaleX, -0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f * scaleX, -0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f * scaleX, -0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f * scaleX, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f * scaleX, -0.5f, -0.5f,  0.0f, 1.0f,
 
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	-0.5f * scaleX,  0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f * scaleX,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f * scaleX,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f * scaleX,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f * scaleX,  0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f * scaleX,  0.5f, -0.5f,  0.0f, 1.0f
 	};
+
 	// Podium VAO and VBO
 	GLuint podiumVBO;
 	glGenVertexArrays(1, &this->quadVAO);
