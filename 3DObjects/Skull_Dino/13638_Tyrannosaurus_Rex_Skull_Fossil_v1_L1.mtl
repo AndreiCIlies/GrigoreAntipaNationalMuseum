@@ -1,0 +1,17 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 17.02.2012 11:18:31
+
+newmtl 13638_Tyrannosaurus_Rex_Skull_Fossil
+	Ns 28.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.1260 0.1260 0.1260
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 13638_Tyrannosaurus_Rex_Skull_Fossil_diff.jpg
+	map_Kd 13638_Tyrannosaurus_Rex_Skull_Fossil_diff.jpg
+	
