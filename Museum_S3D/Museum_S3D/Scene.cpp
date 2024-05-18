@@ -41,8 +41,7 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/dragonfly.jpg", "dragonfly");
 	ResourceManager::LoadTexture("../../Textures/Spiders.jpg", "spiders");
 	ResourceManager::LoadTexture("../../Textures/columnTexture.jpg", "columnsTexture");
-
-
+	ResourceManager::LoadTexture("../../Textures/redCarpet.jpg", "redCarpet");
 
 	//Info about animals
 	ResourceManager::LoadTexture("../../Textures/bearinfo.png", "bearinfo");
@@ -134,6 +133,11 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(4.77f + resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-5.185f - resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-0.5f, 9.55f, 4.79f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
+
+	renderer->Draw(ResourceManager::GetTexture("redCarpet"), pCamera, glm::vec3(0.f, -0.43f, -20.5f + resize), glm::vec3(1.f, 0.1f, 0.25f), glm::radians(0.f), glm::vec3(1.f, 0.f, 0.f), NULL);
+	renderer->Draw(ResourceManager::GetTexture("redCarpet"), pCamera, glm::vec3(0.f, -0.43f, -4.63f + resize), glm::vec3(0.385f, 0.1f, 0.25f), glm::radians(90.f), glm::vec3(0.f, 1.f, 0.f), NULL);
+	renderer->Draw(ResourceManager::GetTexture("redCarpet"), pCamera, glm::vec3(0.f, -0.43f, -30.2f + resize), glm::vec3(0.14f, 0.1f, 0.25f), glm::radians(90.f), glm::vec3(0.f, 1.f, 0.f), NULL);
+
 	// THIRD ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(50.0f, 0.f, 0.f), glm::vec3(), 0.f, glm::vec3(), NULL);
 
