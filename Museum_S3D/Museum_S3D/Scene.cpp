@@ -96,6 +96,7 @@ void Scene::Init()
 	models->insert({ "Duck",Model("../../3DObjects/Duck/duck.obj") });
 	models->insert({ "Skull_Dino",Model("../../3DObjects/Skull_Dino/13638_Tyrannosaurus_Rex_Skull_Fossil_v1_L1.obj") });
 	models->insert({ "Human",Model("../../3DObjects/Human/Style human obj.obj") });
+	models->insert({ "Counter",Model("../../3DObjects/Counter/counter.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -235,10 +236,17 @@ void Scene::RenderModels()
 	models->at("Skull_Dino").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(2.8f, -0.5f, -20.0f));
-	modelM = glm::scale(modelM, glm::vec3(0.7f, 0.7f, 0.7f));
+	modelM = glm::translate(modelM, glm::vec3(2.6f, -0.5f, -20.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.7f, 0.6f, 0.7f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Human").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(2.f, 2.5f, -15.0f));
+	modelM = glm::scale(modelM, glm::vec3(2.0f, 3.0f, 1.0f));
+	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Counter").Draw(modelShader);
 
 	// Third Room - Andrei
 
