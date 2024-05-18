@@ -70,7 +70,7 @@ void Scene::Init()
 	//Mountain/forest zone
 	models->insert({ "Wolf",Model("../../3DObjects/Wolf/wolf.obj") });
 	models->insert({ "Tree",Model("../../3DObjects/Tree/Tree.obj") });
-	models->insert({ "Spinosaurus", Model("../../3DObjects/Spinosaurus/13217_Spinosaurus_V1_NEW.obj") });
+	models->insert({ "Spinosaurus", Model("../../3DObjects/Spinosaurus/spinosaurus.obj") });
 	models->insert({ "Quetzalcoatlus", Model("../../3DObjects/Quetzalcoatlus/13623_Quetzalcoatlus_v1_L2.obj") });
 	models->insert({ "Wire", Model("../../3DObjects/Wire/wire.obj") });
 	models->insert({ "Dilophosaurus", Model("../../3DObjects/Dilophosaurus/dilophosaurus.obj") });
