@@ -178,12 +178,40 @@ void processInput(GLFWwindow* window)
 		ambientStrength = std::max(0.0f, ambientStrength - 0.1f);
 	}
 
+	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+	{
+		pCamera->SetPosition(-50.0f, 3.0f, 3.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+	{
+		pCamera->SetPosition(0.0f, 3.0f, 3.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+	{
+		pCamera->SetPosition(50.0f, 3.0f, 3.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+	{
+		pCamera->SetPosition(-30.0f, 3.0f, 43.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
+	{
+		pCamera->SetPosition(-8.0f, 3.0f, 36.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
+	{
+		pCamera->SetPosition(30.0f, 3.0f, 40.0f);
+	}
 
 	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
 		pCamera->Reset(width, height);
-
 	}
 }
 

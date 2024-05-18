@@ -36,6 +36,7 @@ public:
 	void Reshape(int windowWidth, int windowHeight);
 	const glm::mat4 GetViewMatrix();
 	const glm::vec3 GetPosition();
+	void SetPosition(float x, float y, float z);
 	const glm::mat4 GetProjectionMatrix();
 	void ProcessKeyboard(ECameraMovementType direction, float deltaTime);
 	void MouseControl(float xPos, float yPos);

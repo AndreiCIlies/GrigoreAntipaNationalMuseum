@@ -53,6 +53,14 @@ const glm::vec3 Camera::GetPosition()
 	return position;
 }
 
+void Camera::SetPosition(float x, float y, float z)
+{
+	position.x = x;
+	position.y = y;
+	position.z = z;
+	UpdateCameraVectors();
+}
+
 const glm::mat4 Camera::GetProjectionMatrix()
 {
 	glm::mat4 Proj = glm::mat4(1);
