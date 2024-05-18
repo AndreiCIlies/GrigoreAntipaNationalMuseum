@@ -95,6 +95,7 @@ void Scene::Init()
 	models->insert({ "Pelican",Model("../../3DObjects/Pelican/pelican.obj") });
 	models->insert({ "Duck",Model("../../3DObjects/Duck/duck.obj") });
 	models->insert({ "Skull_Dino",Model("../../3DObjects/Skull_Dino/13638_Tyrannosaurus_Rex_Skull_Fossil_v1_L1.obj") });
+	models->insert({ "Human",Model("../../3DObjects/Human/Style human obj.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -132,9 +133,6 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(4.77f + resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-5.185f - resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-0.5f, 9.55f, 4.79f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
-	renderPodium->Draw(ResourceManager::GetTexture("columnsTexture"), pCamera, glm::vec3(0.f, 0.f, -20.f), glm::vec3(23.5f, 1.f, 10.f), 0.0f, glm::vec3(), NULL);
-	renderer->Draw(ResourceManager::GetTexture("wolfinfo"), pCamera, glm::vec3(15.f , 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
-	renderer->Draw(ResourceManager::GetTexture("bearinfo"), pCamera, glm::vec3(-5.f, 13.f, -45.f + resize), glm::vec3(0.2f, 0.3f, 0.25f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	// THIRD ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(50.0f, 0.f, 0.f), glm::vec3(), 0.f, glm::vec3(), NULL);
 
@@ -202,56 +200,45 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projectionM));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(viewM));
 
-	// First Room - ?
+	// First Room - Cristina
 
 	// Second Room - Cristina
 	
 	glm::mat4 modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(8.0f, 0.5f, -20.0f));
-	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
-	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
-	modelM = glm::rotate(modelM, glm::radians(315.0f), glm::vec3(0.f, 0.f, 1.f));
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Wolf").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(-1.0f, 0.5f, -20.0f)); 
-	modelM = glm::scale(modelM, glm::vec3(0.22f, 0.22f, 0.22f));
-	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
-	modelM = glm::rotate(modelM, glm::radians(-350.0f), glm::vec3(0.f, 0.f, 1.f));
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Bear").Draw(modelShader);
-
-	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(-13.0f, 0.0f, -20.0f));
-	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
-	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Pedastal").Draw(modelShader);
-
-
-	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(-13.0f, 6.0f, -20.0f));
-	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
-	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Skull_Dino").Draw(modelShader);
-
-	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(17.0f, 0.0f, -20.0f));
+	modelM = glm::translate(modelM, glm::vec3(-13.0f, -0.5f, -20.0f));
 	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
 	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Pedastal").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(17.0f, 6.0f, -20.0f));
+	modelM = glm::translate(modelM, glm::vec3(-13.0f, 6.5f, -20.0f));
 	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
 	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Skull_Dino").Draw(modelShader);
 
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(17.0f, -0.5f, -20.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
+	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Pedastal").Draw(modelShader);
 
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(17.0f, 6.5f, -20.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
+	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Skull_Dino").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(2.8f, -0.5f, -20.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.7f, 0.7f, 0.7f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Human").Draw(modelShader);
 
 	// Third Room - Andrei
 
@@ -592,6 +579,5 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Podium").Draw(modelShader);
 
-
-	// Fourth Room - ?
+	// Fourth Room - Andrei
 }
