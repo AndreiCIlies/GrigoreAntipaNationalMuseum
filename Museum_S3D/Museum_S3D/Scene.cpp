@@ -96,6 +96,7 @@ void Scene::Init()
 	models->insert({ "Skull_Dino",Model("../../3DObjects/Skull_Dino/13638_Tyrannosaurus_Rex_Skull_Fossil_v1_L1.obj") });
 	models->insert({ "Human",Model("../../3DObjects/Human/Style human obj.obj") });
 	models->insert({ "Counter",Model("../../3DObjects/Counter/counter.obj") });
+	models->insert({ "Statue",Model("../../3DObjects/Statue/10081_Park-Statue_V3_L3.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -524,6 +525,14 @@ void Scene::RenderModels()
 	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Light").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(51.5f, -0.25f, 52.f));
+	modelM = glm::scale(modelM, glm::vec3(0.045f, 0.0375f, 0.045f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(-1.0f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(135.f), glm::vec3(0.f, 0.f, -1.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Statue").Draw(modelShader);
 
 	// Fifth Room - Cristina
 
