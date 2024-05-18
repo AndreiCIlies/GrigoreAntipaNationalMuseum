@@ -97,6 +97,11 @@ void Scene::Init()
 	models->insert({ "Human",Model("../../3DObjects/Human/Style human obj.obj") });
 	models->insert({ "Counter",Model("../../3DObjects/Counter/counter.obj") });
 	models->insert({ "Statue",Model("../../3DObjects/Statue/10081_Park-Statue_V3_L3.obj") });
+	models->insert({ "Fish1",Model("../../3DObjects/Fish Models/Fish1/12265_Fish_v1_L2.obj") });
+	models->insert({ "Fish2",Model("../../3DObjects/Fish Models/Fish2/13007_Blue-Green_Reef_Chromis_v2_l3.obj") });
+	models->insert({ "Fish3",Model("../../3DObjects/Fish Models/Fish3/12999_Boesemani_Rainbow_v1_l2.obj") });
+	models->insert({ "Fish4",Model("../../3DObjects/Fish Models/Fish4/13016_Yellowtai_ Damselfish_v2_l3.obj") });
+	models->insert({ "Fish5",Model("../../3DObjects/Fish Models/Fish5/12988_Electric_Yellow_cichlid_v1_l3.obj") });
 
 	//Renderers
 	renderer = new Renderer(ResourceManager::GetShader("shaderFloor"));
@@ -601,4 +606,41 @@ void Scene::RenderModels()
 	models->at("Podium").Draw(modelShader);
 
 	// Fourth Room - Andrei
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-39.f, 1.4f, 42.f));
+	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.1f, 0.1f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(-1.0f, 0.0f, 0.0f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(0.0f, 0.0f, 1.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Fish1").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-42.f, 1.4f, 42.f));
+	modelM = glm::scale(modelM, glm::vec3(0.5f, 0.5f, 0.5f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(-1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Fish2").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-45.f, 1.4f, 42.f));
+	modelM = glm::scale(modelM, glm::vec3(0.25f, 0.25f, 0.25f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(0.0f, 1.0f, 0.0f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Fish3").Draw(modelShader);
+
+    modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-48.f, 1.4f, 42.f));
+	modelM = glm::scale(modelM, glm::vec3(1.f, 1.f, 1.f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(-1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Fish4").Draw(modelShader);
+
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-45.f, 1.4f, 42.f));
+	modelM = glm::scale(modelM, glm::vec3(0.5f, 0.5f, 0.5f));
+	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(-1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Fish5").Draw(modelShader);
 }
