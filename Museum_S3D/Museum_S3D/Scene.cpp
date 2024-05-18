@@ -50,19 +50,17 @@ void Scene::Init()
 	ResourceManager::LoadTexture("../../Textures/barosaurusInfo.png", "barosaurusInfo");
 	ResourceManager::LoadTexture("../../Textures/dilophosaurusInfo.png", "dilophosaurusInfo");
 	ResourceManager::LoadTexture("../../Textures/quetzalcoatlusInfo.png", "quetzalcoatlusInfo");
-	// Cearadactylus Info - TO ADD
+
 	ResourceManager::LoadTexture("../../Textures/Daisy.jpg", "Daisy");
-	// Daisy Info - TO ADD
 	ResourceManager::LoadTexture("../../Textures/Rose.jpg", "Rose");
-	// Rose Info - TO ADD
 	ResourceManager::LoadTexture("../../Textures/Tulip.jpg", "Tulip");
-	// Tulip Info - TO ADD
 	ResourceManager::LoadTexture("../../Textures/Daffodil.jpg", "Daffodil");
-	// Daffodil Info - TO ADD
 	ResourceManager::LoadTexture("../../Textures/Crocus.jpg", "Crocus");
-	// Crocus Info - TO ADD
-	ResourceManager::LoadTexture("../../Textures/Anemone.jpg", "Anemone");
-	// Anemone Info - TO ADD
+
+	ResourceManager::LoadTexture("../../Textures/picture1.jpg", "picture1");
+	ResourceManager::LoadTexture("../../Textures/picture2.jpg", "picture2");
+	ResourceManager::LoadTexture("../../Textures/picture3.jpg", "picture3");
+	ResourceManager::LoadTexture("../../Textures/picture4.jpg", "picture4");
 		
 	models = new map<std::string, Model>();
 	//MODELS
@@ -200,6 +198,10 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-45.25f + resize, 9.55f, 50.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-50.f, 9.55f, 4.81f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 
+	renderer->Draw(ResourceManager::GetTexture("picture1"), pCamera, glm::vec3(-40.5f, 17.5f, 54.6f + resize), glm::vec3(0.18f, 0.55f, 0.25f), glm::radians(90.f), glm::vec3(-1.f, 0.f, 0.f), NULL);
+	renderer->Draw(ResourceManager::GetTexture("picture2"), pCamera, glm::vec3(-60.5f, 17.5f, 54.6f + resize), glm::vec3(0.18f, 0.55f, 0.25f), glm::radians(90.f), glm::vec3(-1.f, 0.f, 0.f), NULL);
+	renderer->Draw(ResourceManager::GetTexture("picture3"), pCamera, glm::vec3(-74.5f, 17.5f, 40.f + resize), glm::vec3(0.18f, 0.55f, 0.25f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
+	renderer->Draw(ResourceManager::GetTexture("picture4"), pCamera, glm::vec3(-74.5f, 17.5f, 20 + resize), glm::vec3(0.18f, 0.55f, 0.25f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 }
 
 void Scene::RenderModels()
