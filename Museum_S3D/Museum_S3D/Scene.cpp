@@ -127,8 +127,6 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(-50.f, 4.5f + resize, 5.5f + resize), glm::vec3(), glm::radians(90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("wallTexture"), pCamera, glm::vec3(-95.5f + resize, 4.5f + resize, 0.f), glm::vec3(), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), NULL);
 	renderer->Draw(ResourceManager::GetTexture("ceilingTexture"), pCamera, glm::vec3(-50.f, 30.f + resize, 0.f), glm::vec3(), 0.f, glm::vec3(0.f, 0.f, 1.f), NULL);
-	renderer->Draw(ResourceManager::GetTexture("wolfPhoto"), pCamera, glm::vec3(-65.f, 18.f, -45.f + resize), glm::vec3(0.3f, 0.2f, 0.2f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
-	renderer->Draw(ResourceManager::GetTexture("forest"), pCamera, glm::vec3(-45.f, 23.f, -45.f + resize), glm::vec3(0.3f, 0.2f, 0.2f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 
 
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-45.209f + resize, 9.55f, 0.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
@@ -198,8 +196,6 @@ void Scene::Render()
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(4.73f + resize, 9.55f, 50.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-45.1f + resize, 9.55f, 50.f), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(90.f), glm::vec3(0.f, 0.f, 1.f), 'z');
 	renderer->Draw(ResourceManager::GetTexture("doorTexture"), pCamera, glm::vec3(-0.2f, 9.55f, 4.815f + resize), glm::vec3(0.3f, 0.4f, 0.4f), glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
-	renderer->Draw(ResourceManager::GetTexture("dragonly"), pCamera, glm::vec3(19.f, 9.55f, 70.f), glm::vec3(0.18f, 0.55f, 0.25f), glm::radians(90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
-	renderer->Draw(ResourceManager::GetTexture("bugs"), pCamera, glm::vec3(6.f, 12.55f, 70.f), glm::vec3(0.18f, 0.55f, 0.25f), glm::radians(90.f), glm::vec3(1.f, 0.f, 0.f), NULL);
 
 	// FOURTH ROOM
 	renderer->Draw(ResourceManager::GetTexture("floorTexture"), pCamera, glm::vec3(50.0f, 0.f, 50.f), glm::vec3(), 0.f, glm::vec3(), NULL);
