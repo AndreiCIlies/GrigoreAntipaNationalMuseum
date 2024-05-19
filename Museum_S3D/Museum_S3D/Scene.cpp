@@ -638,7 +638,7 @@ void Scene::RenderModels()
 	models->at("Podium").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(15.f, 1.8f, 42.f));
+	modelM = glm::translate(modelM, glm::vec3(17.f, 1.8f, 32.f));
 	modelM = glm::scale(modelM, glm::vec3(0.07f, 0.07f, 0.07f));
 	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
 	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -646,7 +646,7 @@ void Scene::RenderModels()
 	models->at("Duck").Draw(modelShader);
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(15.f, -0.4f, 43.f));
+	modelM = glm::translate(modelM, glm::vec3(17.f, -0.4f, 33.f));
 	modelM = glm::scale(modelM, glm::vec3(4.f, 4.f, 4.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Podium").Draw(modelShader);
