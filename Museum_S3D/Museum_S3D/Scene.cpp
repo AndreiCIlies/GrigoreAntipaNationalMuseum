@@ -231,14 +231,20 @@ void Scene::RenderModels()
 
 	glm::mat4 modelM = glm::mat4();
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(-35.0f, -0.2f, -20.0f));
-	modelM = glm::scale(modelM, glm::vec3(0.15f, 0.15f, 0.15f));
+	modelM = glm::translate(modelM, glm::vec3(-38.0f, -0.2f, -15.0f));
+	modelM = glm::scale(modelM, glm::vec3(0.25f, 0.25f, 0.25f));
 	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
-	modelM = glm::rotate(modelM, glm::radians(300.0f), glm::vec3(0.f, 0.f, 1.f));
+	modelM = glm::rotate(modelM, glm::radians(45.0f), glm::vec3(0.f, 0.f, 1.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Bear").Draw(modelShader);
 
-
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-44.0f, -0.2f, -4.7f));
+	modelM = glm::scale(modelM, glm::vec3(0.12f, 0.15f, 0.12f));
+	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
+	modelM = glm::rotate(modelM, glm::radians(30.0f), glm::vec3(0.f, 0.f, 1.f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Wolf").Draw(modelShader);
 
 	modelM = glm::mat4();
 	modelM = glm::translate(modelM, glm::vec3(-65.0f, -0.2f, -18.0f));
@@ -248,24 +254,20 @@ void Scene::RenderModels()
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Horse").Draw(modelShader);
 
-
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(-55.0f, -0.2f, -18.0f));
-	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.12f, 0.1f));
-	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
-	modelM = glm::rotate(modelM, glm::radians(330.0f), glm::vec3(0.f, 0.f, 1.f));
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Wolf").Draw(modelShader);
-
-	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(-45.0f, -0.2f, -18.0f));
+	modelM = glm::translate(modelM, glm::vec3(-45.0f, -0.2f, 0.0f));
 	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.12f, 0.1f));
 	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(1.f, 0.f, 0.f));
 	modelM = glm::rotate(modelM, glm::radians(270.0f), glm::vec3(0.f, 0.f, 1.f));
 	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
 	models->at("Cat").Draw(modelShader);
 
-
+	modelM = glm::mat4();
+	modelM = glm::translate(modelM, glm::vec3(-50.f, -0.5f, 0.f));
+	modelM = glm::scale(modelM, glm::vec3(0.17f, 0.05f, 0.17f));
+	modelM = glm::rotate(modelM, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
+	models->at("Grass").Draw(modelShader);
 
 	// Second Room - Cristina
 
