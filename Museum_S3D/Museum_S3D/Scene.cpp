@@ -536,13 +536,6 @@ void Scene::RenderModels()
 	}
 
 	modelM = glm::mat4();
-	modelM = glm::translate(modelM, glm::vec3(49.3f, 43.55f, 50.3f));
-	modelM = glm::scale(modelM, glm::vec3(0.1f, 0.075f, 0.1f));
-	modelM = glm::rotate(modelM, glm::radians(235.f), glm::vec3(1.0f, 1.0f, 1.0f));
-	glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelM));
-	models->at("Light").Draw(modelShader);
-
-	modelM = glm::mat4();
 	modelM = glm::translate(modelM, glm::vec3(51.5f, -0.25f, 52.f));
 	modelM = glm::scale(modelM, glm::vec3(0.045f, 0.0375f, 0.045f));
 	modelM = glm::rotate(modelM, glm::radians(90.f), glm::vec3(-1.0f, 0.f, 0.f));
